@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT CALCULATOR</title>
+</head>
+<body>
+    <H1>JAVASCRIPT CALCULATOR</H1>
+    <button onclick="alert('HELLO ALL')">Click me</button>
+    <div id="calculator">
+
+    </div>
+<script>
+    let displayNumbers=0;
+    let container=document.getElementById("calculator");
+    let count=0;
+let operators=['+','-','*','/'];
+let resultBox=document.createElement("input");
+var br=document.createElement(br);
+resultBox.type="text";
+resultBox.id="result";
+container.appendChild(resultBox);
+for(let i=9;i>=displayNumbers;i--)
+{
+    let button=document.createElement("button");
+    var br=document.createElement("br");
+    button.innerText=i;
+    button.className="number";
+    button.style.color="black";
+    button.style.backgroundColor="white";
+    button.addEventListener("click",function()
+{
+    resultBox.value+=i;
+});
+
+if(count%3==0){
+
+container.appendChild(br);
+}
+container.appendChild(button);
+count++;
+}
+container.appendChild(br);
+    for(let i=0;i<operators.length;i++)
+{
+    let button=document.createElement("button");
+    button.innerText=operators[i];
+    button.addEventListener("click",function()
+{
+   
+    let value=resultBox.value;
+     
+    resultBox.value+=operators[i];
+});
+container.appendChild(button);   
+}
+{
+    let resultButton=document.createElement("button");
+    resultButton.innerText="=";
+    resultButton.addEventListener("click",function()
+{
+    let value=resultBox.value;
+    resultBox.value=eval(value);
+});
+container.appendChild(resultButton);
+}
+</script>
+</body>
+</html>   
